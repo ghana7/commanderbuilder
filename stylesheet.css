@@ -1,0 +1,39 @@
+#content{
+    display:flex;
+}
+
+.cardBox {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    border-radius:5px;
+    border: 5px solid black;
+}
+
+.cardDisplay {
+    width:372px;
+    height:520px;
+    border: 1px solid black;
+}
+
+
+
+.cardBox .cardNameInput {
+    margin:auto;
+    display:inline-block;
+}
+
+#synergies {
+    width: 372px;
+    height: 520px;
+    background-color: lightgray;
+    border-radius: 5px;
+    border: 5px solid black;
+}
+
+.synergyBox {
+    background-color: gray;
+    border-radius: 5px;
+    border: 5px solid black;
+    display: flex;
+}
