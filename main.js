@@ -1,3 +1,5 @@
+var cards = {};
+
 var HttpClient = function () {
     this.get = function (aUrl, aCallback) {
         var anHttpRequest = new XMLHttpRequest();
@@ -19,8 +21,31 @@ function LoadCard(cardBox) {
         console.log(response);
         var cardObject = JSON.parse(response);
         document.getElementById(cardBox).getElementsByClassName("cardDisplay")[0].src = cardObject["image_uris"]["png"];
+        cards[cardBox] = new Card(cardObject);
+        UpdateSynergies();
         }
     )
+}
+
+function UpdateSynergies() {
+    document.getElementById("synergies").innerHTML = "";
+    var cardArray = Object.values(cards)
+    for (var i = 0; i < cardArray.length; i++) {
+        for (var j = 0; j < cardArray[i].synergies.length; j++) {
+            cardArray[i].synergies[j].MakeSynergyDisplay();
+        }
+    }
+}
+
+class Card {
+    constructor(cardJSON) {
+        this.synergies = [];
+        this.name = cardJSON["name"];
+        this.colorIdentity = cardJSON["color_identity"];
+        for (var i = 0; i < this.colorIdentity.length; i++) {
+            this.synergies.push(new Synergy(this.colorIdentity[i], 1));
+        }
+    }
 }
 
 class Synergy {
@@ -33,8 +58,8 @@ class Synergy {
         var mainBox = document.createElement("div");
         var nameBox = document.createElement("div");
         var strengthBox = document.createElement("div");
-        var nameNode = document.createTextNode(name);
-        var strengthNode = document.createTextNode(strength);
+        var nameNode = document.createTextNode(this.name);
+        var strengthNode = document.createTextNode(this.strength);
 
         mainBox.classList += "synergyBox ";
         nameBox.classList += "nameBox ";
