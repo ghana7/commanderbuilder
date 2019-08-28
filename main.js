@@ -48,6 +48,54 @@ class Card {
     }
 }
 
+var cardBoxes = [];
+function MakeCardBox(id) {
+    var cardBox = document.createElement("div");
+    var imgBox = document.createElement("img");
+    var breakLine = document.createElement("br");
+    var textInput = document.createElement("input");
+    var button = document.createElement("input");
+    
+    button.type = "button";
+    button.classList += "cardInputButton";
+    button.addEventListener('click', function() {LoadCard("card" + id)}, false);
+    
+    textInput.type = "text";
+    textInput.classList += "cardNameInput";
+    
+    cardBox.classList += "cardBox";
+    
+    imgBox.classList += "cardDisplay";
+    
+    cardBox.id = "card" + id;
+    cardBox.appendChild(imgBox);
+    cardBox.appendChild(breakLine);
+    cardBox.appendChild(textInput);
+    cardBox.appendChild(button);
+    
+    document.getElementById("cards").appendChild(cardBox);
+    cardBoxes.push(cardBox);
+}
+
+var debugCardCount = 3;
+function DebugMakeCard() {
+    MakeCardBox(debugCardCount);
+    debugCardCount++;
+}
+
+function resizeCards() {
+    console.log(document.getElementById("cardSizeSlider").value);
+    var newWidth = document.getElementById("cardSizeSlider").value;
+    var newHeight = newWidth * 1.4;
+    for (var i = 0; i < cardBoxes.length; i++) {
+        console.log("resize");
+        cardBoxes[i].getElementsByClassName("cardDisplay")[0].style.width = "" + newWidth + "px";
+        cardBoxes[i].getElementsByClassName("cardDisplay")[0].style.height = "" + newHeight + "px";
+    }
+}
+
+document.getElementById("cardSizeSlider").addEventListener("change", resizeCards, false);
+
 class Synergy {
     constructor(name, strength) {
         this.name = name;
