@@ -1,7 +1,13 @@
 #content{
     display:flex;
+    border:1px solid black;
 }
 
+#cards {
+    flex: 3 1 0;
+    display:flex;
+    flex-wrap: wrap;
+}
 .cardBox {
     display: flex;
     flex-direction: column;
@@ -11,7 +17,8 @@
 }
 
 .cardDisplay {
-    width:372px;
+    flex: 0 1 auto;
+    width: 373px;
     height:520px;
     border: 1px solid black;
 }
@@ -24,7 +31,7 @@
 }
 
 #synergies {
-    width: 372px;
+    flex: 1 1 auto;
     height: 520px;
     background-color: lightgray;
     border-radius: 5px;

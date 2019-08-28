@@ -7,19 +7,18 @@
     
 </head>
 <body>
+    <input type="button" onclick="DebugMakeCard()"/>
+    <input type="range" id="cardSizeSlider" min=0 max=400 value=373/>
     <div id="content">
-        <div id="card1" class="cardBox">
-            <img class="cardDisplay" />
-            <br />
-            <input type="text" class="cardNameInput" />
-            <input type="button" class="cardInputButton" onclick="LoadCard('card1')" />
+        <div id="cards">
+            <!--<div id="card1" class="cardBox">
+                <img class="cardDisplay" />
+                <br />
+                <input type="text" class="cardNameInput" />
+                <input type="button" class="cardInputButton" onclick="LoadCard('card1')" />
+            </div>-->
         </div>
-        <div id="card2" class="cardBox">
-            <img class="cardDisplay" />
-            <br />
-            <input type="text" class="cardNameInput" />
-            <input type="button" class="cardInputButton" onclick="LoadCard('card2')" />
-        </div>
+        
         <div id="synergies">
 
         </div>
